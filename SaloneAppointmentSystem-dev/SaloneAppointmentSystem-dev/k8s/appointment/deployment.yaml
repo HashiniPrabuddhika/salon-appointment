@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: appointment-service
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: appointment
+  template:
+    metadata:
+      labels:
+        app: appointment
+    spec:
+      containers:
+        - name: appointment
+          image: nushan2000/appointment-service:latest
+          ports:
+            - containerPort: 4000
+          env:
+            - name: PORT
+              value: "4000"
+            - name: JWT_SECRET
+              value: "nushanhansana"
+            - name: KAFKA_BROKER
+              value: "kafka-service:9092"
+            - name: MONGO_URI_AUTH
+              value: "mongodb://mongodb:27017/salone"
+            
