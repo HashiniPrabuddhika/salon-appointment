@@ -4,7 +4,7 @@ import proxy from "express-http-proxy";
 
 const app = express();
 
-app.use("/auth", proxy("http://localhost:4000"));
+app.use("/auth", proxy("http://localhost:0"));
 app.use("/salon", proxy("http://localhost:4001"));
 app.use("/reservation", proxy("http://localhost:4002"));
 
